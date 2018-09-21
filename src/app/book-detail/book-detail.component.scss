@@ -1,0 +1,82 @@
+.bookImage {
+    padding:1px;
+   border:1px solid #021a40;
+   background-color: white;
+   box-shadow: 6px 6px 38px 0px rgba(0,0,0,0.38);
+}
+
+.editButtonGeneral {
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 40px 0px;
+    margin-right: 20px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+  }
+  
+  .editButton {
+    background-color: #333;
+    color: white;
+    border: 2px solid white;
+  }
+  
+  .editButton:hover {
+    background-color: white;
+    color: black;
+  }
+
+
+  /* Edit book modal styling */ 
+
+.modal-content {
+    background-color: #333;
+    color: white;
+    border-radius: 0px;
+  }
+  
+  .close {
+    color: white;
+  }
+  
+  .modal-body .form-horizontal .col-sm-2,
+  .modal-body .form-horizontal .col-sm-10 {
+      width: 100%
+  }
+  
+  .modal-body .form-horizontal .control-label {
+    text-align: left;
+  }
+  .modal-body .form-horizontal .col-sm-offset-2 {
+    margin-left: 15px;
+  }
+
+  .rowMargin {
+      margin-top: 20px;
+  }
+
+  
+  /* Object display */
+  .objectParagraph {
+    font-family: "Courier New", Courier, monospace;
+    background-color: #3c3c3c;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-radius: 0px;
+  }
+  
+  .propertyColor {
+    color: #9876aa;
+  }
+  
+  .valueColor {
+    color: #6a8759;
+  }
+  
+  .objectComma {
+    color: #cb7730;
+  }

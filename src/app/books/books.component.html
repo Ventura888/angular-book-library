@@ -1,0 +1,91 @@
+<div class="container">
+  <div class="row">
+    <div class="center">
+      <div class="col-md-12">
+        <button data-toggle="modal" data-target="#addBookModal" class="addButtonGeneral addButton"><span class="glyphicon glyphicon-plus"></span>
+          ADD A NEW BOOK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container center">
+  <div class="col-md-3"></div>
+  <div class="col-md-6"><span id="uniqueError"></span></div>
+  <div class="col-md-3"></div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="addBookModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add a new book</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" *ngIf="addForm" [formGroup]="addForm">
+
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="bookTitle">Title: *</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="bookTitle" formControlName="bookTitle" #bookTitle placeholder="Enter book title">
+              <p *ngIf="!addForm.controls.bookTitle.pristine && addForm.controls.bookTitle.errors?.required" style="color: #e23434">Title
+                is required!</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="bookAuthor">Author: *</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="bookAuthor" formControlName="bookAuthor" #bookAuthor
+                placeholder="Enter book author">
+              <p *ngIf="!addForm.controls.bookAuthor.pristine && addForm.controls.bookAuthor.errors?.required" style="color: #e23434">Author
+                is required!</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="bookDate">Date: *</label>
+            <div class="col-sm-10">
+              <input type="date" class="form-control" id="bookDate" formControlName="bookDate" #bookDate>
+              <p *ngIf="!addForm.controls.bookDate.pristine && addForm.controls.bookDate.errors?.required" style="color: #e23434">Date
+                is required!</p>
+            </div>
+          </div>
+
+          <!-- (click) passes input value to add() and then clears the input -->
+          <button class="addButtonGeneral addButton" [disabled]="addForm.invalid" (click)="add(bookTitle.value, bookAuthor.value, bookDate.value); bookTitle.value=''; bookAuthor.value=''; bookDate.value=''; "
+            data-dismiss="modal">
+            ADD BOOK
+          </button>
+          <button class="addButtonGeneral addButton" data-dismiss="modal">Close</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <!--<div *ngFor="let book of books" (click)="onSelect(book)">-->
+  <div style="margin-top: 50px;">
+    <li *ngFor="let book of books">
+
+        <div class="col-sm-3">
+            <div class="bookThumbnail">
+              <div class="hovereffect">
+                <img class="img-responsive" src="{{book.img}}" alt="{{book.title | titlecase | removeSpecial}}">
+                <div class="overlay">
+                  <h2><span class="darkBg">{{book.title | titlecase | removeSpecial}}</span></h2>
+                  <p class="whiteBorder"><a routerLink="/book-details/{{book.id}}"><span class="glyphicon glyphicon-edit"></span> View & Edit</a></p>
+                  <p class="whiteBorder"><a style="cursor: pointer;"  (click)="delete(book)"><span class="glyphicon glyphicon-trash"></span> Delete Book</a></p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </li>
+  </div>
+</div>
+

@@ -1,0 +1,94 @@
+<div *ngIf="book">
+  <div class="container whiteContainer">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="{{book.img}}" class="bookImage">
+      </div>
+      <div class="col-md-5">
+        <h2>{{book.title | titlecase}}</h2>
+        <div class="row">
+          <div class="col-md-2 left">Author:</div>
+          <div class="col-md-10 left">{{book.author}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-2 left">Date:</div>
+          <div class="col-md-10 left">{{book.date}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-2 left">Category:</div>
+          <div class="col-md-10 left">{{book.category}}</div>
+        </div>
+
+        <div>
+          <button data-toggle="modal" data-target="#editBookModal" class="editButtonGeneral editButton"><span class="glyphicon glyphicon-edit"></span>
+            EDIT BOOK</button>
+          <button (click)="goBack();" class="editButtonGeneral editButton"><span class="glyphicon glyphicon-backward"></span>
+            Back to book
+            list</button>
+        </div>
+      </div>
+      <div class="col-md-3">
+          <p class="objectParagraph">
+              <span style="color:#e2e2e2;">//Object display:</span><br>
+              <span style="color:white;">&#10100;</span><br>
+              <span class="propertyColor">id<span style="color:white;">: </span> </span> <span class="valueColor">{{book.id}}</span><span class="objectComma">,</span><br>
+              <span class="propertyColor">author<span style="color:white;">: </span> </span> <span class="valueColor">{{book.author}}</span><span
+              class="objectComma">,</span><br>
+              <span class="propertyColor">date<span style="color:white;">: </span> </span> <span class="valueColor">{{book.date}}</span><span
+              class="objectComma">,</span><br>
+              <span class="propertyColor">title<span style="color:white;">: </span> </span> <span class="valueColor">{{book.title}}</span><span
+              class="objectComma">,</span><br>
+              <span class="propertyColor">img<span style="color:white;">: </span> </span> <span class="valueColor">{{book.img}}</span><span
+              class="objectComma"></span><br>
+              <span style="color:white;">&#10101;</span>
+            </p>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="editBookModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit Book</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row rowMargin">
+            <div class="form-group">
+              <label class="control-label col-sm-2">Title: </label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" [(ngModel)]="book.title" placeholder="Enter book title">
+              </div>
+            </div>
+          </div>
+          <div class="row rowMargin">
+            <div class="form-group">
+              <label class="control-label col-sm-2">Author: </label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" [(ngModel)]="book.author" placeholder="Enter book author">
+              </div>
+            </div>
+          </div>
+          <div class="row rowMargin">
+            <div class="form-group">
+              <label class="control-label col-sm-2">Date: </label>
+              <div class="col-sm-10">
+                <input type="date" class="form-control" [(ngModel)]="book.date">
+              </div>
+            </div>
+          </div>
+          <button class="editButtonGeneral editButton" data-dismiss="modal" (click)="save(); goBack();">SAVE CHANGES</button>
+          <button class="editButtonGeneral editButton" data-dismiss="modal">CLOSE</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
